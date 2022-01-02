@@ -4,10 +4,14 @@ from cryptography.fernet import Fernet
 
 
 def main():
-  cipher_suite = Fernet(bytes(environ.get("FERNET_KEY")))
+  cipher_suite = Fernet(environ.get("FERNET_KEY"))
   
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
-  old_access_token = cipher_suite.decrypt(encrypted_old_access_token)
+  old_access_token = None
+  try:
+    old_access_token = cipher_suite.decrypt(encrypted_old_access_token)
+  except:
+    pass
   
   print("Access Token from secret: {}".format(old_access_token))
   print("Correct Token: {}".format(old_access_token.startswith('ThisIsASecret')))
