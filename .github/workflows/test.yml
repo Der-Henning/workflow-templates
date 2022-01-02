@@ -20,6 +20,7 @@ jobs:
         working-directory: ./
         run: |
           python test.py
+          export ${{env.GITHUB_ENV}}
           echo New Access Token: ${{env.NEW_ACCESS_TOKEN}}
         env:
           ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
