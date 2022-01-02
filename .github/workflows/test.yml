@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Run tests
-        working-directory: ./src
+        working-directory: ./
         run: |
           python test.py
           echo Access Token: ${{env.ACCESS_TOKEN}}
