@@ -7,7 +7,7 @@ def main():
   env_file = environ.get('GITHUB_ENV', None)
   if env_file:
     with open(env_file, "a") as file:
-      file.write("ACCESS_TOKEN={}{}\n".format("ThisIsASecret", random()))
+      file.write("NEW_ACCESS_TOKEN={}{}\n".format("ThisIsASecret", random()))
 
 if __name__ == "__main__":
   main()
