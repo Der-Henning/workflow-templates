@@ -8,11 +8,11 @@ def main():
   
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
 
-  old_access_token = cryptocode.decrypt(encrypted_old_access_token, passkey)
+  if encrypted_old_access_token: old_access_token = cryptocode.decrypt(encrypted_old_access_token, passkey)
 
   
   print("Access Token from secret: {}".format(old_access_token))
-  print("Correct Token: {}".format(old_access_token.startswith('ThisIsASecret')))
+  if old_access_token: print("Correct Token: {}".format(old_access_token.startswith('ThisIsASecret')))
  
   new_access_token = "ThisIsASecret{}".format(random())
   print("New Token: {}".format(new_access_token))
