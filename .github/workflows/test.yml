@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.9']
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run tests
+        working-directory: ./src
+        run: |
+          python test.py
+          echo Access Token: ${{env.ACCESS_TOKEN}}
+        env:
+          ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+      - uses: hmanzur/actions-set-secret@v2.0.0
+        with:
+          name: 'ACCESS_TOKEN'
+          value: ${{env.ACCESS_TOKEN}}
+          repository: Der-Henning/test-workflows
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
