@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 
 
 def main():
-  cipher_suite = Fernet(environ.get("FERNET_KEY"))
+  cipher_suite = Fernet(bytes(environ.get("FERNET_KEY")))
   
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
   old_access_token = cipher_suite.decrypt(encrypted_old_access_token)
