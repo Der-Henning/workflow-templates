@@ -22,8 +22,6 @@ jobs:
         working-directory: ./
         run: |
           python test.py
-          echo Newer Access Token: $NEWER_ACCESS_TOKEN
-          echo New Access Token: ${{env.NEW_ACCESS_TOKEN}}
         env:
           ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
           FERNET_KEY: ${{secrets.FERNET_KEY}}
