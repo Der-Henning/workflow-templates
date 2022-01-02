@@ -1,4 +1,5 @@
 from os import environ
+from random import random
 
 
 def main():
@@ -6,7 +7,7 @@ def main():
   env_file = environ.get('GITHUB_ENV', None)
   if env_file:
     with open(env_file, "a") as file:
-      file.write("ACCESS_TOKEN={}\n".format("ThisIsASecret"))
+      file.write("ACCESS_TOKEN={}{}\n".format("ThisIsASecret", random()))
 
 if __name__ == "__main__":
   main()
