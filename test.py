@@ -9,7 +9,7 @@ def main():
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
   old_access_token = None
   try:
-    old_access_token = cipher_suite.decrypt(encrypted_old_access_token)
+    old_access_token = cipher_suite.decrypt(bytes(encrypted_old_access_token,'UTF-8'))
   except:
     pass
   
@@ -18,7 +18,7 @@ def main():
  
   new_access_token = "ThisIsASecret{}".format(random())
   print("New Token: {}".format(new_access_token))
-  encrypted_new_access_token = cipher_suite.encrypt(new_access_token)
+  encrypted_new_access_token = cipher_suite.encrypt(bytes(new_access_token,'UTF-8'))
   
   env_file = environ.get('GITHUB_ENV', None)
   
