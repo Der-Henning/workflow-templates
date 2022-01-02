@@ -20,6 +20,7 @@ jobs:
         working-directory: ./
         run: |
           python test.py
+          echo New Access Token: $NEW_ACCESS_TOKEN
         env:
           ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
       - uses: hmanzur/actions-set-secret@v2.0.0
