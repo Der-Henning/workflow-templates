@@ -7,11 +7,9 @@ def main():
   cipher_suite = Fernet(environ.get("FERNET_KEY"))
   
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
-  old_access_token = None
-  try:
-    old_access_token = cipher_suite.decrypt(bytes(encrypted_old_access_token,'UTF-8'))
-  except:
-    pass
+
+  old_access_token = cipher_suite.decrypt(encrypted_old_access_token)
+
   
   print("Access Token from secret: {}".format(old_access_token))
   if old_access_token: print("Correct Token: {}".format(old_access_token.startswith('ThisIsASecret')))
