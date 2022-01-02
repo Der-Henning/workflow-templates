@@ -25,6 +25,6 @@ jobs:
       - uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'ACCESS_TOKEN'
-          value: ${{env.ACCESS_TOKEN}}
+          value: ${{env.NEW_ACCESS_TOKEN}}
           repository: Der-Henning/test-workflows
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
