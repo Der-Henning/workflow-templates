@@ -5,7 +5,7 @@ from random import random
 def main():
   old_access_token = environ.get("ACCESS_TOKEN", None)
   print("Access Token from secret: {}".format(old_access_token))
-  print("Correct Token: {}".format(print(old_access_token.startswith('ThisIsASecret'))))
+  print("Correct Token: {}".format(old_access_token.startswith('ThisIsASecret')))
   env_file = environ.get('GITHUB_ENV', None)
   if env_file:
     with open(env_file, "a") as file:
