@@ -1,14 +1,14 @@
 from os import environ
 from random import random
-from simplecrypt import encrypt, decrypt
+import cryptocode
 
 
 def main():
-  passkey = Fernet(environ.get("FERNET_KEY"))
+  passkey = environ.get("FERNET_KEY")
   
   encrypted_old_access_token = environ.get("ACCESS_TOKEN", None)
 
-  old_access_token = decrypt(passkey, encrypted_old_access_token)
+  old_access_token = cryptocode.decrypt(encrypted_old_access_token, passkey)
 
   
   print("Access Token from secret: {}".format(old_access_token))
@@ -16,7 +16,7 @@ def main():
  
   new_access_token = "ThisIsASecret{}".format(random())
   print("New Token: {}".format(new_access_token))
-  encrypted_new_access_token = encrypt(passkey, new_access_token)
+  encrypted_new_access_token = cryptocode.encrypt(new_access_token, passkey)
   
   env_file = environ.get('GITHUB_ENV', None)
   
