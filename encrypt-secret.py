@@ -12,6 +12,11 @@ def main():
 
 
     print("Access Token: {}".format(access_token))
+    i=0
+
+    while i < len(access_token):
+        print(access_token[i])
+        i += 1
 
 
     ######
