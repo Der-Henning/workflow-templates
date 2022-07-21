@@ -13,6 +13,8 @@ def main():
 
         # Even printing the variable in python will display the masked version
         print("Access Token: {}".format(access_token))
+        print("Correct Access Token: {}".format(
+            access_token.startswith("ThisIsASecret")))
 
         ######
         #
@@ -23,7 +25,7 @@ def main():
         #####
         new_access_token = "ThisIsASecret{}".format(random())
 
-        ## New access token will be printed in plain text!
+        # New access token will be printed in plain text!
         print("New Token: {}".format(new_access_token))
 
         # Write new access token to environment file
